@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <Id>cb25852f-86c7-44f5-8fb2-112b96878127</Id>
+  <Name>Azure REST API Demo</Name>
+  <Url>https://management.azure.com/subscriptions</Url>
+  <QueryString />
+  <HttpProtocol>1.1</HttpProtocol>
+  <Timeout>30</Timeout>
+  <ProjectFileEncoding>utf-8</ProjectFileEncoding>
+  <Description />
+  <RequestEncoding>utf-8</RequestEncoding>
+  <AutomaticDecompression>true</AutomaticDecompression>
+  <AllowStreamBuffering>true</AllowStreamBuffering>
+  <DynamicParameters>
+    <DynamicParameter>
+      <Id>6443a12f-3f87-482f-9bee-a1939a72b22d</Id>
+      <Name>TenantID</Name>
+      <DataType>text</DataType>
+      <GenerationType>list</GenerationType>
+      <DateFormat />
+      <ListValues>
+        <ListValue>[Enter you TenantID]</ListValue>
+      </ListValues>
+    </DynamicParameter>
+    <DynamicParameter>
+      <Id>1e5f1fd0-4901-4586-a87a-bf069c7c480c</Id>
+      <Name>ARMResource</Name>
+      <DataType>text</DataType>
+      <GenerationType>list</GenerationType>
+      <DateFormat />
+      <ListValues>
+        <ListValue>https://management.core.windows.net/</ListValue>
+      </ListValues>
+    </DynamicParameter>
+    <DynamicParameter>
+      <Id>dfba1246-93dc-4afc-9bd6-20b7cd88683e</Id>
+      <Name>ClientID</Name>
+      <DataType>text</DataType>
+      <GenerationType>list</GenerationType>
+      <DateFormat />
+      <ListValues>
+        <ListValue>[Enter your ClientID]</ListValue>
+      </ListValues>
+    </DynamicParameter>
+    <DynamicParameter>
+      <Id>103ec257-94e6-401d-8575-eda6b3ee1821</Id>
+      <Name>ClientSecret</Name>
+      <DataType>text</DataType>
+      <GenerationType>list</GenerationType>
+      <DateFormat />
+      <ListValues>
+        <ListValue>[Enter your ClientSecret]</ListValue>
+      </ListValues>
+    </DynamicParameter>
+    <DynamicParameter>
+      <Id>f77ec9c0-1d1f-4b12-aff5-8334acb47359</Id>
+      <Name>SubscriptionID</Name>
+      <DataType>text</DataType>
+      <GenerationType>list</GenerationType>
+      <DateFormat />
+      <ListValues>
+        <ListValue>[Enter you SubscriptionID]</ListValue>
+      </ListValues>
+    </DynamicParameter>
+    <DynamicParameter>
+      <Id>6fd46930-3410-42e7-a2e3-57b66cd2a47d</Id>
+      <Name>NewResourceGroupName</Name>
+      <DataType>text</DataType>
+      <GenerationType>list</GenerationType>
+      <DateFormat />
+      <ListValues>
+        <ListValue>[Enter your new resource group]</ListValue>
+      </ListValues>
+    </DynamicParameter>
+  </DynamicParameters>
+  <Headers>
+    <Header>
+      <Id>023eb393-ba8e-4f0c-ac45-5753d4d631b7</Id>
+      <Name>Authorization</Name>
+      <Value />
+    </Header>
+  </Headers>
+  <UseAuthentication>false</UseAuthentication>
+  <AuthenticationData>
+    <AuthenticationCredentials />
+    <ImpersonationLevel />
+  </AuthenticationData>
+  <AllowRedirect>true</AllowRedirect>
+  <MaximumRedirections>50</MaximumRedirections>
+  <KeepAlive>true</KeepAlive>
+  <EncodeUrl>true</EncodeUrl>
+  <EncodeForm>true</EncodeForm>
+  <ProjectItems>
+    <ProjectItem>
+      <Id>c43a2f9a-d87b-48ba-be4e-196d72e40691</Id>
+      <Name>Get Azure Access Token</Name>
+      <Url>https://login.windows.net/{6443a12f-3f87-482f-9bee-a1939a72b22d}/oauth2/token</Url>
+      <RequestBody>resource={1e5f1fd0-4901-4586-a87a-bf069c7c480c}&amp;client_id={dfba1246-93dc-4afc-9bd6-20b7cd88683e}&amp;grant_type=client_credentials&amp;client_secret={103ec257-94e6-401d-8575-eda6b3ee1821}</RequestBody>
+      <Method>POST</Method>
+      <ContentType>application/x-www-form-urlencoded</ContentType>
+      <SendChunked>false</SendChunked>
+      <ExecutionCount>1</ExecutionCount>
+      <UrlOption>absolute</UrlOption>
+      <AppendGlobalQueryString>false</AppendGlobalQueryString>
+      <CreateDate>636138654675908604</CreateDate>
+      <ChangeDate>636138663047737819</ChangeDate>
+      <ValidationRule />
+      <IncludeProjectAuthentication>true</IncludeProjectAuthentication>
+      <PercentEncodeParameters d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <IncludeReceivedCookies>false</IncludeReceivedCookies>
+      <IncludeProjectHeaders>true</IncludeProjectHeaders>
+      <ItemHeaders />
+      <BodySource>0</BodySource>
+      <AdditionalHeaders />
+      <ExecutionOrder>1</ExecutionOrder>
+      <IncludeWithCommandLine>true</IncludeWithCommandLine>
+      <IgnoreExecution>false</IgnoreExecution>
+    </ProjectItem>
+    <ProjectItem>
+      <Id>035a6ba2-8564-4d84-8959-b131a639ab3b</Id>
+      <Name>Create Resource Group</Name>
+      <Url>{f77ec9c0-1d1f-4b12-aff5-8334acb47359}/resourceGroups/{6fd46930-3410-42e7-a2e3-57b66cd2a47d}?api-version=2014-04-01</Url>
+      <RequestBody>{
+  "properties": {},
+  "location": "West Europe"
+}</RequestBody>
+      <Method>PUT</Method>
+      <ContentType>application/json</ContentType>
+      <SendChunked>false</SendChunked>
+      <ExecutionCount>1</ExecutionCount>
+      <UrlOption>relative</UrlOption>
+      <AppendGlobalQueryString>false</AppendGlobalQueryString>
+      <CreateDate>636138668821411409</CreateDate>
+      <ChangeDate>636138668821411409</ChangeDate>
+      <ValidationRule />
+      <IncludeProjectAuthentication>true</IncludeProjectAuthentication>
+      <PercentEncodeParameters d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <IncludeReceivedCookies>false</IncludeReceivedCookies>
+      <IncludeProjectHeaders>true</IncludeProjectHeaders>
+      <ItemHeaders />
+      <BodySource>0</BodySource>
+      <AdditionalHeaders />
+      <ExecutionOrder>2</ExecutionOrder>
+      <IncludeWithCommandLine>true</IncludeWithCommandLine>
+      <IgnoreExecution>false</IgnoreExecution>
+    </ProjectItem>
+  </ProjectItems>
+  <CreateDate>636138650028919889</CreateDate>
+  <ChangeDate>636138679737226731</ChangeDate>
+  <Version>32</Version>
+  <MonitorData>true</MonitorData>
+  <Validations />
+  <ExecutionDelay>0</ExecutionDelay>
+  <FirstExecutionDelay>0</FirstExecutionDelay>
+  <ValidateServerCertificate>false</ValidateServerCertificate>
+  <Chainings />
+</Project>
