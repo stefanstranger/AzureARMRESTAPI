@@ -1,0 +1,618 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <Id>1b70e078-eb1e-463f-a72e-3bb15e071a95</Id>
+  <Name>Azure ARM REST API Part 2 Demo</Name>
+  <Url>https://management.azure.com/subscriptions</Url>
+  <QueryString />
+  <HttpProtocol>1.1</HttpProtocol>
+  <Timeout>30</Timeout>
+  <ProjectFileEncoding>utf-8</ProjectFileEncoding>
+  <Description>Using http calls to the Azure ARM REST API</Description>
+  <RequestEncoding>utf-8</RequestEncoding>
+  <AutomaticDecompression>true</AutomaticDecompression>
+  <AllowStreamBuffering>true</AllowStreamBuffering>
+  <DynamicParameters>
+    <DynamicParameter>
+      <Id>bf4897b0-ca36-44e4-b269-3a6d52a7428b</Id>
+      <Name>SubscriptionId</Name>
+      <DataType>text</DataType>
+      <GenerationType>list</GenerationType>
+      <DateFormat />
+      <MatchCase>false</MatchCase>
+      <ListValues>
+        <ListValue>[SubscriptionID]</ListValue>
+      </ListValues>
+    </DynamicParameter>
+    <DynamicParameter>
+      <Id>0e3ccab0-8c4a-4d33-a282-d963a6c06247</Id>
+      <Name>ResourceGroupName</Name>
+      <DataType>text</DataType>
+      <GenerationType>list</GenerationType>
+      <DateFormat />
+      <MatchCase>false</MatchCase>
+      <ListValues>
+        <ListValue>[ResourceGroupName]</ListValue>
+      </ListValues>
+    </DynamicParameter>
+    <DynamicParameter>
+      <Id>6c3a21d9-2aeb-4056-baca-d5ad5fb052b9</Id>
+      <Name>NewStorageAccountName</Name>
+      <DataType>text</DataType>
+      <GenerationType>list</GenerationType>
+      <DateFormat />
+      <MatchCase>false</MatchCase>
+      <ListValues>
+        <ListValue>[StorageAccountName]</ListValue>
+      </ListValues>
+    </DynamicParameter>
+    <DynamicParameter>
+      <Id>639596e5-9025-4c64-888c-0214a076591a</Id>
+      <Name>Location</Name>
+      <DataType>text</DataType>
+      <GenerationType>list</GenerationType>
+      <DateFormat />
+      <MatchCase>false</MatchCase>
+      <ListValues>
+        <ListValue>WestEurope</ListValue>
+      </ListValues>
+    </DynamicParameter>
+    <DynamicParameter>
+      <Id>93632fd6-2367-4bbc-9d60-d6b0c2166bda</Id>
+      <Name>StorageAccountType</Name>
+      <DataType>text</DataType>
+      <GenerationType>list</GenerationType>
+      <DateFormat />
+      <MatchCase>false</MatchCase>
+      <ListValues>
+        <ListValue>Standard_LRS</ListValue>
+      </ListValues>
+    </DynamicParameter>
+    <DynamicParameter>
+      <Id>791e8833-8c7d-497f-bc06-69a5ae5f02a1</Id>
+      <Name>ARMResource</Name>
+      <DataType>text</DataType>
+      <GenerationType>list</GenerationType>
+      <DateFormat />
+      <MatchCase>false</MatchCase>
+      <ListValues>
+        <ListValue>https://management.core.windows.net/</ListValue>
+      </ListValues>
+    </DynamicParameter>
+    <DynamicParameter>
+      <Id>aaf311bd-f51c-43fb-8b13-c4a825c5aa54</Id>
+      <Name>ClientID</Name>
+      <DataType>text</DataType>
+      <GenerationType>list</GenerationType>
+      <DateFormat />
+      <MatchCase>false</MatchCase>
+      <ListValues>
+        <ListValue>[ClientIDName]</ListValue>
+      </ListValues>
+    </DynamicParameter>
+    <DynamicParameter>
+      <Id>660e3f31-2eb3-4331-944b-c5594f0a1e19</Id>
+      <Name>ClientSecret</Name>
+      <DataType>text</DataType>
+      <GenerationType>list</GenerationType>
+      <DateFormat />
+      <MatchCase>false</MatchCase>
+      <ListValues>
+        <ListValue>[ClientSecret]</ListValue>
+      </ListValues>
+    </DynamicParameter>
+    <DynamicParameter>
+      <Id>a8aeb8a9-8ca4-41d4-9eda-3f187d1ba463</Id>
+      <Name>TenantID</Name>
+      <DataType>text</DataType>
+      <GenerationType>list</GenerationType>
+      <DateFormat />
+      <MatchCase>false</MatchCase>
+      <ListValues>
+        <ListValue>[TenantID]</ListValue>
+      </ListValues>
+    </DynamicParameter>
+    <DynamicParameter>
+      <Id>fbc49a33-bba8-4596-a081-f49b2af88066</Id>
+      <Name>AutomationAccountName</Name>
+      <DataType>text</DataType>
+      <GenerationType>list</GenerationType>
+      <DateFormat />
+      <MatchCase>false</MatchCase>
+      <ListValues>
+        <ListValue>[AutomationAccountName]</ListValue>
+      </ListValues>
+    </DynamicParameter>
+    <DynamicParameter>
+      <Id>fa4c2829-f2fe-4ca2-a4de-e57e75058716</Id>
+      <Name>ResourceGroupNameAutomation</Name>
+      <DataType>text</DataType>
+      <GenerationType>list</GenerationType>
+      <DateFormat />
+      <MatchCase>false</MatchCase>
+      <ListValues>
+        <ListValue>[ResourceGroupNameforAutomationAccount]</ListValue>
+      </ListValues>
+    </DynamicParameter>
+  </DynamicParameters>
+  <Headers />
+  <UseAuthentication>false</UseAuthentication>
+  <AuthenticationData>
+    <AuthenticationCredentials />
+    <ImpersonationLevel />
+    <SpecifiedCredentials />
+  </AuthenticationData>
+  <AllowRedirect>true</AllowRedirect>
+  <MaximumRedirections>50</MaximumRedirections>
+  <KeepAlive>true</KeepAlive>
+  <EncodeUrl>true</EncodeUrl>
+  <EncodeForm>true</EncodeForm>
+  <ProjectItems>
+    <ProjectItem>
+      <Id>d37d4ddd-019c-420c-b0a6-ca0f60d00c6a</Id>
+      <Name>Get Azure AccessToken</Name>
+      <Url>https://login.windows.net/{a8aeb8a9-8ca4-41d4-9eda-3f187d1ba463}/oauth2/token</Url>
+      <RequestBody>resource={791e8833-8c7d-497f-bc06-69a5ae5f02a1}&amp;client_id={aaf311bd-f51c-43fb-8b13-c4a825c5aa54}&amp;grant_type=client_credentials&amp;client_secret={660e3f31-2eb3-4331-944b-c5594f0a1e19}</RequestBody>
+      <Method>POST</Method>
+      <ContentType>application/x-www-form-urlencoded</ContentType>
+      <SendChunked>false</SendChunked>
+      <ExecutionCount>1</ExecutionCount>
+      <UrlOption>absolute</UrlOption>
+      <AppendGlobalQueryString>false</AppendGlobalQueryString>
+      <CreateDate>636144612655585019</CreateDate>
+      <ChangeDate>636146489809648940</ChangeDate>
+      <ValidationRule />
+      <IncludeProjectAuthentication>false</IncludeProjectAuthentication>
+      <PercentEncodeParameters d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <IncludeReceivedCookies>false</IncludeReceivedCookies>
+      <IncludeProjectHeaders>false</IncludeProjectHeaders>
+      <ItemHeaders />
+      <BodySource>0</BodySource>
+      <AdditionalHeaders />
+      <ExecutionOrder>1</ExecutionOrder>
+      <IncludeWithCommandLine>true</IncludeWithCommandLine>
+      <IgnoreExecution>false</IgnoreExecution>
+      <UploadAsBase64>false</UploadAsBase64>
+    </ProjectItem>
+    <ProjectItem>
+      <Id>294e0111-d087-480d-99b0-655f7bf390cd</Id>
+      <Name>Create Storage Account</Name>
+      <Url>{bf4897b0-ca36-44e4-b269-3a6d52a7428b}/resourceGroups/{0e3ccab0-8c4a-4d33-a282-d963a6c06247}/providers/Microsoft.Storage/storageAccounts/{6c3a21d9-2aeb-4056-baca-d5ad5fb052b9}?api-version=2015-05-01-preview</Url>
+      <RequestBody>{
+  "name": "{6c3a21d9-2aeb-4056-baca-d5ad5fb052b9}",
+  "location": "{639596e5-9025-4c64-888c-0214a076591a}",
+  "tags": {},
+  "properties": {
+    "accountType": "{93632fd6-2367-4bbc-9d60-d6b0c2166bda}"
+    }
+}</RequestBody>
+      <Method>PUT</Method>
+      <ContentType>application/json</ContentType>
+      <SendChunked>false</SendChunked>
+      <ExecutionCount>1</ExecutionCount>
+      <UrlOption>relative</UrlOption>
+      <AppendGlobalQueryString>false</AppendGlobalQueryString>
+      <CreateDate>636123080847602115</CreateDate>
+      <ChangeDate>636146491928191513</ChangeDate>
+      <ValidationRule />
+      <IncludeProjectAuthentication>true</IncludeProjectAuthentication>
+      <PercentEncodeParameters d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <IncludeReceivedCookies>false</IncludeReceivedCookies>
+      <IncludeProjectHeaders>false</IncludeProjectHeaders>
+      <ItemHeaders />
+      <BodySource>0</BodySource>
+      <AdditionalHeaders>Authorization: Bearer {5d4fd5cc-4cad-4397-aa15-6bdac605b0cc}</AdditionalHeaders>
+      <ExecutionOrder>3</ExecutionOrder>
+      <IncludeWithCommandLine>true</IncludeWithCommandLine>
+      <IgnoreExecution>false</IgnoreExecution>
+      <UploadAsBase64>false</UploadAsBase64>
+    </ProjectItem>
+    <ProjectItem>
+      <Id>c85588af-93f5-48f4-bc1d-fbf09ffd5d28</Id>
+      <Name>Get StorageAccount Properties</Name>
+      <Url>{bf4897b0-ca36-44e4-b269-3a6d52a7428b}/resourceGroups/{0e3ccab0-8c4a-4d33-a282-d963a6c06247}/providers/Microsoft.Storage/storageAccounts/{6c3a21d9-2aeb-4056-baca-d5ad5fb052b9}?api-version=2015-05-01-preview</Url>
+      <RequestBody />
+      <Method>GET</Method>
+      <ContentType />
+      <SendChunked>false</SendChunked>
+      <ExecutionCount>1</ExecutionCount>
+      <UrlOption>relative</UrlOption>
+      <AppendGlobalQueryString>false</AppendGlobalQueryString>
+      <CreateDate>636120629671116843</CreateDate>
+      <ChangeDate>636146492396470778</ChangeDate>
+      <ValidationRule />
+      <IncludeProjectAuthentication>true</IncludeProjectAuthentication>
+      <PercentEncodeParameters d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <IncludeReceivedCookies>false</IncludeReceivedCookies>
+      <IncludeProjectHeaders>true</IncludeProjectHeaders>
+      <ItemHeaders />
+      <BodySource d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <AdditionalHeaders>Authorization: Bearer {5d4fd5cc-4cad-4397-aa15-6bdac605b0cc}</AdditionalHeaders>
+      <ExecutionOrder>4</ExecutionOrder>
+      <IncludeWithCommandLine>true</IncludeWithCommandLine>
+      <IgnoreExecution>false</IgnoreExecution>
+      <UploadAsBase64>false</UploadAsBase64>
+    </ProjectItem>
+    <ProjectItem>
+      <Id>4b9cbc88-3655-438a-bb7b-ac8513c564d5</Id>
+      <Name>Delete Storage Account</Name>
+      <Url>{bf4897b0-ca36-44e4-b269-3a6d52a7428b}/resourceGroups/{0e3ccab0-8c4a-4d33-a282-d963a6c06247}/providers/Microsoft.Storage/storageAccounts/{6c3a21d9-2aeb-4056-baca-d5ad5fb052b9}?api-version=2015-05-01-preview</Url>
+      <RequestBody />
+      <Method>DELETE</Method>
+      <ContentType />
+      <SendChunked>false</SendChunked>
+      <ExecutionCount>1</ExecutionCount>
+      <UrlOption>relative</UrlOption>
+      <AppendGlobalQueryString>false</AppendGlobalQueryString>
+      <CreateDate>636123999117376949</CreateDate>
+      <ChangeDate>636146541518542772</ChangeDate>
+      <ValidationRule />
+      <IncludeProjectAuthentication>true</IncludeProjectAuthentication>
+      <PercentEncodeParameters d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <IncludeReceivedCookies>false</IncludeReceivedCookies>
+      <IncludeProjectHeaders>true</IncludeProjectHeaders>
+      <ItemHeaders />
+      <BodySource d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <AdditionalHeaders>Authorization: Bearer</AdditionalHeaders>
+      <ExecutionOrder>6</ExecutionOrder>
+      <IncludeWithCommandLine>true</IncludeWithCommandLine>
+      <IgnoreExecution>false</IgnoreExecution>
+      <UploadAsBase64>false</UploadAsBase64>
+    </ProjectItem>
+    <ProjectItem>
+      <Id>69dcc28b-100e-4225-8678-edf7045afa86</Id>
+      <Name>Deploy Very Simple Windows VM ARM Template</Name>
+      <Url>{bf4897b0-ca36-44e4-b269-3a6d52a7428b}/resourcegroups/{0e3ccab0-8c4a-4d33-a282-d963a6c06247}/providers/microsoft.resources/deployments/ARMDeployment?api-version=2016-09-01</Url>
+      <RequestBody>{
+    "properties": {
+        "template": {
+            "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+            "contentVersion": "1.0.0.0",
+            "parameters": {
+                "adminUsername": {
+                    "type": "string",
+                    "metadata": {
+                        "description": "Username for the Virtual Machine."
+                    }
+                },
+                "adminPassword": {
+                    "type": "securestring",
+                    "metadata": {
+                        "description": "Password for the Virtual Machine."
+                    }
+                },
+                "dnsLabelPrefix": {
+                    "type": "string",
+                    "metadata": {
+                        "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+                    }
+                },
+                "windowsOSVersion": {
+                    "type": "string",
+                    "defaultValue": "2016-Datacenter",
+                    "allowedValues": [
+                        "2008-R2-SP1",
+                        "2012-Datacenter",
+                        "2012-R2-Datacenter",
+                        "2016-Nano-Server",
+                        "2016-Datacenter-with-Containers",
+                        "2016-Datacenter"
+                    ],
+                    "metadata": {
+                        "description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version."
+                    }
+                }
+            },
+            "variables": {
+                "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'sawinvm')]",
+                "nicName": "myVMNic",
+                "addressPrefix": "10.0.0.0/16",
+                "subnetName": "Subnet",
+                "subnetPrefix": "10.0.0.0/24",
+                "publicIPAddressName": "myPublicIP",
+                "vmName": "SimpleWindowsVM",
+                "virtualNetworkName": "MyVNET",
+                "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]"
+            },
+            "resources": [
+                {
+                    "type": "Microsoft.Storage/storageAccounts",
+                    "name": "[variables('storageAccountName')]",
+                    "apiVersion": "2016-01-01",
+                    "location": "[resourceGroup().location]",
+                    "sku": {
+                        "name": "Standard_LRS"
+                    },
+                    "kind": "Storage",
+                    "properties": {}
+                },
+                {
+                    "apiVersion": "2016-03-30",
+                    "type": "Microsoft.Network/publicIPAddresses",
+                    "name": "[variables('publicIPAddressName')]",
+                    "location": "[resourceGroup().location]",
+                    "properties": {
+                        "publicIPAllocationMethod": "Dynamic",
+                        "dnsSettings": {
+                            "domainNameLabel": "[parameters('dnsLabelPrefix')]"
+                        }
+                    }
+                },
+                {
+                    "apiVersion": "2016-03-30",
+                    "type": "Microsoft.Network/virtualNetworks",
+                    "name": "[variables('virtualNetworkName')]",
+                    "location": "[resourceGroup().location]",
+                    "properties": {
+                        "addressSpace": {
+                            "addressPrefixes": [
+                                "[variables('addressPrefix')]"
+                            ]
+                        },
+                        "subnets": [
+                            {
+                                "name": "[variables('subnetName')]",
+                                "properties": {
+                                    "addressPrefix": "[variables('subnetPrefix')]"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "apiVersion": "2016-03-30",
+                    "type": "Microsoft.Network/networkInterfaces",
+                    "name": "[variables('nicName')]",
+                    "location": "[resourceGroup().location]",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
+                        "[resourceId('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
+                    ],
+                    "properties": {
+                        "ipConfigurations": [
+                            {
+                                "name": "ipconfig1",
+                                "properties": {
+                                    "privateIPAllocationMethod": "Dynamic",
+                                    "publicIPAddress": {
+                                        "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
+                                    },
+                                    "subnet": {
+                                        "id": "[variables('subnetRef')]"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "apiVersion": "2015-06-15",
+                    "type": "Microsoft.Compute/virtualMachines",
+                    "name": "[variables('vmName')]",
+                    "location": "[resourceGroup().location]",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+                        "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+                    ],
+                    "properties": {
+                        "hardwareProfile": {
+                            "vmSize": "Standard_D1"
+                        },
+                        "osProfile": {
+                            "computerName": "[variables('vmName')]",
+                            "adminUsername": "[parameters('adminUsername')]",
+                            "adminPassword": "[parameters('adminPassword')]"
+                        },
+                        "storageProfile": {
+                            "imageReference": {
+                                "publisher": "MicrosoftWindowsServer",
+                                "offer": "WindowsServer",
+                                "sku": "[parameters('windowsOSVersion')]",
+                                "version": "latest"
+                            },
+                            "osDisk": {
+                                "name": "osdisk",
+                                "vhd": {
+                                    "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))).primaryEndpoints.blob, 'vhds/osdisk.vhd')]"
+                                },
+                                "caching": "ReadWrite",
+                                "createOption": "FromImage"
+                            },
+                            "dataDisks": [
+                                {
+                                    "name": "datadisk1",
+                                    "diskSizeGB": "100",
+                                    "lun": 0,
+                                    "vhd": {
+                                        "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))).primaryEndpoints.blob, 'vhds/datadisk1.vhd')]"
+                                    },
+                                    "createOption": "Empty"
+                                }
+                            ]
+                        },
+                        "networkProfile": {
+                            "networkInterfaces": [
+                                {
+                                    "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
+                                }
+                            ]
+                        },
+                        "diagnosticsProfile": {
+                            "bootDiagnostics": {
+                                "enabled": "true",
+                                "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))).primaryEndpoints.blob]"
+                            }
+                        }
+                    }
+                }
+            ],
+            "outputs": {
+                "hostname": {
+                    "type": "string",
+                    "value": "[reference(variables('publicIPAddressName')).dnsSettings.fqdn]"
+                }
+            }
+        },
+        "mode": "Incremental",
+        "parameters": {
+            "adminUsername": {
+                "value": "localadmin"
+            },
+            "adminPassword": {
+                "value": "MyVerySecretPassw0rd!"
+            },
+            "dnsLabelPrefix": {
+                "value": "restapidemovm"
+            }
+        }
+    }
+}</RequestBody>
+      <Method>PUT</Method>
+      <ContentType>application/json</ContentType>
+      <SendChunked>false</SendChunked>
+      <ExecutionCount>1</ExecutionCount>
+      <UrlOption>relative</UrlOption>
+      <AppendGlobalQueryString>false</AppendGlobalQueryString>
+      <CreateDate>636146539723820576</CreateDate>
+      <ChangeDate>636146548848898587</ChangeDate>
+      <ValidationRule />
+      <IncludeProjectAuthentication>true</IncludeProjectAuthentication>
+      <PercentEncodeParameters d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <IncludeReceivedCookies>false</IncludeReceivedCookies>
+      <IncludeProjectHeaders>true</IncludeProjectHeaders>
+      <ItemHeaders />
+      <BodySource>0</BodySource>
+      <AdditionalHeaders>Authorization: Bearer {5d4fd5cc-4cad-4397-aa15-6bdac605b0cc}</AdditionalHeaders>
+      <ExecutionOrder>5</ExecutionOrder>
+      <IncludeWithCommandLine>true</IncludeWithCommandLine>
+      <IgnoreExecution>false</IgnoreExecution>
+      <UploadAsBase64>false</UploadAsBase64>
+    </ProjectItem>
+    <ProjectItem>
+      <Id>6038f341-2981-4f62-a0ea-215a1f6930dd</Id>
+      <Name>List Azure Automation Runbooks</Name>
+      <Url>{bf4897b0-ca36-44e4-b269-3a6d52a7428b}/resourcegroups/{fa4c2829-f2fe-4ca2-a4de-e57e75058716}/providers/Microsoft.Automation/automationAccounts/{fbc49a33-bba8-4596-a081-f49b2af88066}/runbooks?api-version=2015-10-31</Url>
+      <RequestBody />
+      <Method>GET</Method>
+      <ContentType />
+      <SendChunked>false</SendChunked>
+      <ExecutionCount>1</ExecutionCount>
+      <UrlOption>relative</UrlOption>
+      <AppendGlobalQueryString>false</AppendGlobalQueryString>
+      <CreateDate>636150871922179666</CreateDate>
+      <ChangeDate>636150874685345482</ChangeDate>
+      <ValidationRule />
+      <IncludeProjectAuthentication>true</IncludeProjectAuthentication>
+      <PercentEncodeParameters d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <IncludeReceivedCookies>false</IncludeReceivedCookies>
+      <IncludeProjectHeaders>true</IncludeProjectHeaders>
+      <ItemHeaders />
+      <BodySource d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <AdditionalHeaders>Authorization: Bearer {5d4fd5cc-4cad-4397-aa15-6bdac605b0cc}</AdditionalHeaders>
+      <ExecutionOrder>7</ExecutionOrder>
+      <IncludeWithCommandLine>true</IncludeWithCommandLine>
+      <IgnoreExecution>false</IgnoreExecution>
+      <UploadAsBase64>false</UploadAsBase64>
+    </ProjectItem>
+    <ProjectItem>
+      <Id>2100ad01-3264-424a-98f9-f11b2fa98877</Id>
+      <Name>Stop Azure VM via Runbook webhook</Name>
+      <Url>[enterwebhookurlhere]</Url>
+      <RequestBody>{ 
+   "ResourcegroupName":"restapidemorg",
+   "VMName":"SimpleWindowsVM"
+}</RequestBody>
+      <Method>POST</Method>
+      <ContentType>application/json</ContentType>
+      <SendChunked>false</SendChunked>
+      <ExecutionCount>1</ExecutionCount>
+      <UrlOption>absolute</UrlOption>
+      <AppendGlobalQueryString>false</AppendGlobalQueryString>
+      <CreateDate>636151400420920189</CreateDate>
+      <ChangeDate>636151628191748366</ChangeDate>
+      <ValidationRule />
+      <IncludeProjectAuthentication>true</IncludeProjectAuthentication>
+      <PercentEncodeParameters d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <IncludeReceivedCookies>false</IncludeReceivedCookies>
+      <IncludeProjectHeaders>true</IncludeProjectHeaders>
+      <ItemHeaders />
+      <BodySource>0</BodySource>
+      <AdditionalHeaders>From:user@contoso.com";Date="11/19/2016 15:47:00"</AdditionalHeaders>
+      <ExecutionOrder>8</ExecutionOrder>
+      <IncludeWithCommandLine>true</IncludeWithCommandLine>
+      <IgnoreExecution>false</IgnoreExecution>
+      <UploadAsBase64>false</UploadAsBase64>
+    </ProjectItem>
+  </ProjectItems>
+  <CreateDate>636120629671121835</CreateDate>
+  <ChangeDate>636152315206919499</ChangeDate>
+  <Version>35</Version>
+  <MonitorData>true</MonitorData>
+  <Validations />
+  <ExecutionDelay>0</ExecutionDelay>
+  <FirstExecutionDelay>0</FirstExecutionDelay>
+  <ValidateServerCertificate>false</ValidateServerCertificate>
+  <Chainings>
+    <Chaining>
+      <Id>5d4fd5cc-4cad-4397-aa15-6bdac605b0cc</Id>
+      <Name>AccessToken</Name>
+      <Type>responsebodyjsonpath</Type>
+      <ItemName>$.access_token</ItemName>
+      <Regex />
+      <MatchCase>false</MatchCase>
+      <Function>0</Function>
+      <NsPrefix />
+      <NsUri />
+      <IsGlobal>true</IsGlobal>
+    </Chaining>
+  </Chainings>
+  <ExecutionGroups>
+    <ExecutionGroup>
+      <Id>30b6fc4a-c211-49a4-b6bf-21eefffda5df</Id>
+      <Name>Create StorageAccount</Name>
+      <ExecutionItems>
+        <ExecutionGroupItem>
+          <Id>d37d4ddd-019c-420c-b0a6-ca0f60d00c6a</Id>
+        </ExecutionGroupItem>
+        <ExecutionGroupItem>
+          <Id>294e0111-d087-480d-99b0-655f7bf390cd</Id>
+        </ExecutionGroupItem>
+        <ExecutionGroupItem>
+          <Id>c85588af-93f5-48f4-bc1d-fbf09ffd5d28</Id>
+        </ExecutionGroupItem>
+      </ExecutionItems>
+    </ExecutionGroup>
+    <ExecutionGroup>
+      <Id>06ada79d-55dc-49e6-b881-ff1a46aa9902</Id>
+      <Name>Deploy VM using ARM Template</Name>
+      <ExecutionItems>
+        <ExecutionGroupItem>
+          <Id>d37d4ddd-019c-420c-b0a6-ca0f60d00c6a</Id>
+        </ExecutionGroupItem>
+        <ExecutionGroupItem>
+          <Id>69dcc28b-100e-4225-8678-edf7045afa86</Id>
+        </ExecutionGroupItem>
+      </ExecutionItems>
+    </ExecutionGroup>
+    <ExecutionGroup>
+      <Id>44a53f0e-ba49-489c-a084-84cfc049dd3a</Id>
+      <Name>List Azure Automation Runbooks</Name>
+      <ExecutionItems>
+        <ExecutionGroupItem>
+          <Id>d37d4ddd-019c-420c-b0a6-ca0f60d00c6a</Id>
+        </ExecutionGroupItem>
+        <ExecutionGroupItem>
+          <Id>6038f341-2981-4f62-a0ea-215a1f6930dd</Id>
+        </ExecutionGroupItem>
+      </ExecutionItems>
+    </ExecutionGroup>
+    <ExecutionGroup>
+      <Id>b6a7a994-6a72-4233-a572-fb75c5b42268</Id>
+      <Name>Stop Azure VM</Name>
+      <ExecutionItems>
+        <ExecutionGroupItem>
+          <Id>2100ad01-3264-424a-98f9-f11b2fa98877</Id>
+        </ExecutionGroupItem>
+      </ExecutionItems>
+    </ExecutionGroup>
+  </ExecutionGroups>
+</Project>
